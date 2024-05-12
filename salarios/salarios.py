@@ -145,21 +145,21 @@ def _exec_teste_de_caso(arquivo_entrada: TextIO, arquivo_saida: TextIO) -> None:
     :param arquivo_saida: Arquivo de saída em que os resultados dos cálculos deverão ser escritos.
     """
     salarios = (_Salario.from_valor_bruto(Decimal(salario)) for salario in arquivo_entrada.readlines())
-    arquivo_saida.write((f'{'Bruto':>10} '
-                         f'{'AliqINSS':>10} '
-                         f'{'Val.INSS':>10} '
-                         f'{'Base I.R.':>10} '
-                         f'{'AliqIR':>10} '
-                         f'{'Val.IR':>10} '
-                         f'{'Liquido':>10}\n'))
+    arquivo_saida.write((f'{'Bruto':>9} '
+                         f'{'AliqINSS':>9} '
+                         f'{'Val.INSS':>9} '
+                         f'{'Base I.R.':>9} '
+                         f'{'AliqIR':>9} '
+                         f'{'Val.IR':>9} '
+                         f'{'Liquido':>9}\n'))
     for salario in sorted(salarios, key=lambda s: s.valor_bruto):
-        arquivo_saida.write((f'{salario.valor_bruto:>10.2f} '
-                             f'{salario.inss.aliquota * 100:>10.1f} '
-                             f'{salario.inss.valor:>10.2f} '
-                             f'{salario.ir.base:>10.2f} '
-                             f'{salario.ir.aliquota * 100:>10.2f} '
-                             f'{salario.ir.valor:>10.2f} '
-                             f'{salario.valor_liquido:>10.2f}\n'))
+        arquivo_saida.write((f'{salario.valor_bruto:>9.2f} '
+                             f'{salario.inss.aliquota * 100:>9.1f} '
+                             f'{salario.inss.valor:>9.2f} '
+                             f'{salario.ir.base:>9.2f} '
+                             f'{salario.ir.aliquota * 100:>9.2f} '
+                             f'{salario.ir.valor:>9.2f} '
+                             f'{salario.valor_liquido:>9.2f}\n'))
 
 
 def _main() -> None:
